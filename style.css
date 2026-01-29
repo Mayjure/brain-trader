@@ -1,38 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Brain Trader Dashboard</title>
+/* ======================== */
+/* Body Styling */
+/* ======================== */
+body {
+    font-family: Arial, sans-serif; // Font family
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364); // Gradient background
+    color: #ffffff; // Text color
+    margin: 0;
+    padding: 20px;
+}
 
-    <!-- Link to external CSS -->
-    <link rel="stylesheet" href="style.css">
+/* ======================== */
+/* Header Styling */
+/* ======================== */
+h1, h2 {
+    text-align: center; // Center headers
+}
 
-    <!-- Load Lightweight Charts Library from CDN for free NASDAQ chart -->
-    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
-</head>
-<body>
-    <!-- Page Header -->
-    <h1>Brain Trader Dashboard</h1>
+/* ======================== */
+/* Brain Node Buttons */
+/* ======================== */
+.brain-nodes {
+    text-align: center; // Center button container
+    margin-bottom: 20px;
+}
 
-    <!-- Brain Nodes Buttons -->
-    <!-- Users can click to simulate leg, 50% retrace, and GO signals -->
-    <div class="brain-nodes">
-        <button id="legBtn">LEG</button>
-        <button id="retracementBtn">50% Retrace</button>
-        <button id="goBtn">GO</button>
-    </div>
+.brain-nodes button {
+    background: #ff9800; // Button background
+    border: none;
+    color: #fff; // Button text
+    padding: 15px 30px;
+    margin: 5px;
+    border-radius: 10px; // Rounded corners
+    cursor: pointer;
+    font-size: 18px;
+    transition: transform 0.2s, background 0.2s; // Smooth hover effect
+}
 
-    <!-- Chart Container -->
-    <!-- The NASDAQ chart will render here -->
-    <div id="chart" style="height: 400px; width: 100%;"></div>
+.brain-nodes button:hover {
+    transform: scale(1.1); // Grow on hover
+    background: #ffc107; // Color change on hover
+}
 
-    <!-- Session Logs -->
-    <!-- Logs show each event when buttons are pressed -->
-    <h2>Session Logs</h2>
-    <div id="logs"></div>
-
-    <!-- Main Script -->
-    <!-- Contains all JavaScript logic -->
-    <script src="script.js"></script>
-</body>
-</html>
+/* ======================== */
+/* Session Logs Styling */
+/* ======================== */
+#logs {
+    background: rgba(0,0,0,0.5); // Semi-transparent
+    padding: 10px;
+    border-radius: 8px;
+    max-height: 200px;
+    overflow-y: auto; // Scroll if too many logs
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.4;
+}
