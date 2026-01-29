@@ -1,44 +1,29 @@
-/*
-script.js
-=========
-Controls Brain Unlock logic and button sequence
-*/
+/* ======================== */
+/* Brain Unlock Function */
+/* ======================== */
 
-const leg = document.getElementById("leg");
-const mid = document.getElementById("mid");
-const go = document.getElementById("go");
-const status = document.getElementById("status");
+function unlockBrain() {
+    const phases = document.querySelectorAll("#brain span");
 
-// Reset all nodes
-function reset() {
-  leg.classList.remove("active");
-  mid.classList.remove("active");
-  go.classList.remove("active");
+    phases.forEach((phase, index) => {
+        setTimeout(() => {
+            phase.style.background = "#00ffcc";
+            phase.style.color = "#000";
+        }, index * 500);
+    });
 }
 
-// Mark leg node
-function markLeg() {
-  reset();
-  leg.classList.add("active");
-  status.innerText = "Leg formed. Wait for 50%.";
-}
+/* ======================== */
+/* Load TradingView NASDAQ */
+/* ======================== */
 
-// Mark mid node (50% retrace)
-function markMid() {
-  if (!leg.classList.contains("active")) {
-    status.innerText = "No leg yet. Press 'Mark Leg' first.";
-    return;
-  }
-  mid.classList.add("active");
-  status.innerText = "50% reached. Stay patient.";
-}
-
-// Mark continuation
-function markGo() {
-  if (!mid.classList.contains("active")) {
-    status.innerText = "Patience. 50% not hit yet.";
-    return;
-  }
-  go.classList.add("active");
-  status.innerText = "Continuation confirmed.";
-}
+new TradingView.widget({
+    "width": "100%",
+    "height": 500,
+    "symbol": "NASDAQ:NDX",
+    "interval": "15",
+    "timezone": "Etc/UTC",
+    "theme": "dark",
+    "style": "1",
+    "container_id": "tradingview_chart"
+});
