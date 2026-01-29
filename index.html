@@ -1,69 +1,84 @@
-<!--
-index.html
-==========
-Main page for Brain Trader system
-Contains:
-- Brain training nodes (LEG, 50%, GO)
-- Free real-time NASDAQ chart
--->
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Brain Trader</title>
+    <!-- ======================== -->
+    <!-- Basic Page Setup -->
+    <!-- ======================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Trader | Unlock the Edge</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Connect CSS -->
-  <link rel="stylesheet" href="style.css">
+    <!-- ======================== -->
+    <!-- Link CSS -->
+    <!-- ======================== -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <h1>🧠 Brain Trader</h1>
-  <p class="subtitle">Train your eye to detect legs & 50% retraces</p>
+    <!-- ======================== -->
+    <!-- Main Container -->
+    <!-- ======================== -->
+    <div class="container">
 
-  <div class="container">
+        <!-- ======================== -->
+        <!-- Header Section -->
+        <!-- ======================== -->
+        <header>
+            <h1>🧠 Brain Trader</h1>
+            <p>Unlock Pattern Recognition • Trade the Leg • Respect the 50%</p>
+        </header>
 
-    <!-- Brain Training Panel -->
-    <div class="panel brain-panel">
-      <h2>Brain Unlock</h2>
-      <div id="leg" class="node">LEG</div>
-      <div id="mid" class="node">50%</div>
-      <div id="go" class="node">GO</div>
-      <div id="status" class="status">Waiting for leg...</div>
-      <button onclick="markLeg()">Mark Leg</button>
-      <button onclick="markMid()">Hit 50%</button>
-      <button onclick="markGo()">Continuation</button>
+        <!-- ======================== -->
+        <!-- Brain Unlock Visualization -->
+        <!-- ======================== -->
+        <section class="brain-section">
+            <div id="brain">
+                <span>Phase 1</span>
+                <span>Phase 2</span>
+                <span>Phase 3</span>
+            </div>
+
+            <button onclick="unlockBrain()">Unlock Brain</button>
+        </section>
+
+        <!-- ======================== -->
+        <!-- Trading Logic Explanation -->
+        <!-- ======================== -->
+        <section class="logic">
+            <h2>Trading Edge Logic</h2>
+            <ul>
+                <li>Market moves in 3 phases</li>
+                <li>Each phase creates a “leg”</li>
+                <li>Price retraces ~50% of the leg</li>
+                <li>Continuation follows the retracement</li>
+            </ul>
+        </section>
+
+        <!-- ======================== -->
+        <!-- NASDAQ Chart (FREE & LIVE) -->
+        <!-- ======================== -->
+        <section class="chart">
+            <h2>NASDAQ Live Chart</h2>
+
+            <!-- TradingView Free Widget -->
+            <div class="tradingview-widget-container">
+                <div id="tradingview_chart"></div>
+            </div>
+        </section>
+
     </div>
 
-    <!-- NASDAQ Chart Panel -->
-    <div class="panel chart-panel">
-      <h2>NASDAQ Live Chart</h2>
-      <div id="tv_chart"></div>
-    </div>
+    <!-- ======================== -->
+    <!-- Link JavaScript -->
+    <!-- ======================== -->
+    <script src="script.js"></script>
 
-  </div>
-
-  <!-- TradingView free real-time chart library -->
-  <script src="https://s3.tradingview.com/tv.js"></script>
-
-  <!-- Initialize TradingView chart -->
-  <script>
-    new TradingView.widget({
-      container_id: "tv_chart",
-      symbol: "NASDAQ:NDX",
-      interval: "5",
-      theme: "dark",
-      width: "100%",
-      height: 400
-    });
-  </script>
-
-  <!-- Connect JavaScript logic -->
-  <script src="script.js"></script>
-
+    <!-- ======================== -->
+    <!-- TradingView Script -->
+    <!-- ======================== -->
+    <script src="https://s3.tradingview.com/tv.js"></script>
 </body>
+
 </html>
