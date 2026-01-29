@@ -1,0 +1,91 @@
+<!--
+index.html
+----------------
+This file defines WHAT EXISTS on the page.
+It does NOT control colors.
+It does NOT control behavior.
+It only says:
+- what text exists
+- what buttons exist
+- what sections exist
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Character set so text displays correctly -->
+  <meta charset="UTF-8">
+
+  <!-- Title shown on the browser tab -->
+  <title>Brain Trader – Training System</title>
+
+  <!-- Connect this page to the CSS (appearance) file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Main title visible on the page -->
+  <h1>🧠 Brain Trader Trainer</h1>
+
+  <!-- Simple instruction -->
+  <p>Leg → 50% Retrace → Continuation</p>
+
+  <!--
+  Container holds the entire training system.
+  We will later split it visually into sections.
+  -->
+  <div class="container">
+
+    <!--
+    LEFT SIDE: Brain visualization
+    Each circle lights up when a rule is correctly followed
+    -->
+    <div class="brain">
+
+      <h3>Brain Unlock</h3>
+
+      <!-- Lights up when a LEG is identified -->
+      <div id="legNode" class="node">LEG</div>
+
+      <!-- Lights up when price hits ~50% -->
+      <div id="midNode" class="node">50%</div>
+
+      <!-- Lights up when continuation happens -->
+      <div id="contNode" class="node">GO</div>
+
+    </div>
+
+    <!--
+    RIGHT SIDE: Control buttons
+    You click these ONLY when market rules are met
+    -->
+    <div class="controls">
+
+      <h3>Market Actions</h3>
+
+      <!-- Button to mark a market leg -->
+      <button onclick="markLeg()">Mark Leg</button>
+
+      <!-- Button to mark the 50% retracement -->
+      <button onclick="markMid()">Price Hit 50%</button>
+
+      <!-- Button to mark continuation -->
+      <button onclick="markContinue()">Continuation</button>
+
+      <!-- Status messages appear here -->
+      <div id="log">Waiting for leg…</div>
+
+    </div>
+
+  </div>
+
+  <!--
+  Connect this page to the JavaScript file.
+  This must be at the bottom so the page loads first.
+  -->
+  <script src="script.js"></script>
+
+</body>
+</html>
