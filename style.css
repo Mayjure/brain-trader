@@ -1,76 +1,38 @@
-/*
-style.css
-=========
-Modern dark theme for Brain Trader system
-*/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Brain Trader Dashboard</title>
 
-body {
-  background: radial-gradient(circle, #1b1f3b, #0b0d17);
-  color: white;
-  font-family: 'Inter', sans-serif;
-  text-align: center;
-  padding: 20px;
-}
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="style.css">
 
-h1 {
-  margin-bottom: 5px;
-}
+    <!-- Load Lightweight Charts Library from CDN for free NASDAQ chart -->
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+</head>
+<body>
+    <!-- Page Header -->
+    <h1>Brain Trader Dashboard</h1>
 
-.subtitle {
-  color: #9aa4ff;
-  margin-bottom: 30px;
-}
+    <!-- Brain Nodes Buttons -->
+    <!-- Users can click to simulate leg, 50% retrace, and GO signals -->
+    <div class="brain-nodes">
+        <button id="legBtn">LEG</button>
+        <button id="retracementBtn">50% Retrace</button>
+        <button id="goBtn">GO</button>
+    </div>
 
-.container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
+    <!-- Chart Container -->
+    <!-- The NASDAQ chart will render here -->
+    <div id="chart" style="height: 400px; width: 100%;"></div>
 
-.panel {
-  background: rgba(255,255,255,0.05);
-  border-radius: 15px;
-  padding: 20px;
-  width: 350px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.5);
-}
+    <!-- Session Logs -->
+    <!-- Logs show each event when buttons are pressed -->
+    <h2>Session Logs</h2>
+    <div id="logs"></div>
 
-.node {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  background: #2c2f4a;
-  margin: 10px auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-  font-weight: 600;
-}
-
-.node.active {
-  background: #22c55e;
-  box-shadow: 0 0 20px #22c55e;
-  transform: scale(1.1);
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 8px;
-  border-radius: 8px;
-  border: none;
-  background: #3b82f6;
-  color: white;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #2563eb;
-}
-
-.status {
-  margin: 10px;
-  color: #c7d2fe;
-}
+    <!-- Main Script -->
+    <!-- Contains all JavaScript logic -->
+    <script src="script.js"></script>
+</body>
+</html>
