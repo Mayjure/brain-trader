@@ -1,0 +1,61 @@
+/*
+style.css
+---------
+This file controls HOW things look.
+Colors, spacing, layout.
+This gives visual feedback to your brain.
+*/
+
+/* Page background and text */
+body {
+  background-color: #0f1220;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+/*
+Container holds both the brain and the controls
+We place them side by side
+*/
+.container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+/*
+Each brain node is a circle
+*/
+.node {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #333;
+  margin: 15px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+When a node is active (learning confirmed),
+it lights up green
+*/
+.node.active {
+  background-color: #4ade80;
+  box-shadow: 0 0 20px #4ade80;
+}
+
+/* Button styling */
+button {
+  padding: 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+/* Message text */
+#log {
+  margin-top: 15px;
+  color: #c7d2fe;
+}
