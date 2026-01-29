@@ -13,35 +13,48 @@ Contains:
     <meta charset="UTF-8">
     <title>Brain Trader Dashboard</title>
 
-    <!-- Link to external CSS -->
+    <!-- ======================== -->
+    <!-- External CSS -->
+    <!-- ======================== -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Load Lightweight Charts Library from CDN for free NASDAQ chart -->
+    <!-- ======================== -->
+    <!-- Lightweight Charts Library -->
+    <!-- ======================== -->
     <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
 </head>
 <body>
+
+    <!-- ======================== -->
     <!-- Page Header -->
+    <!-- ======================== -->
     <h1>Brain Trader Dashboard</h1>
 
-    <!-- Brain Nodes Buttons -->
-    <!-- Users can click to simulate leg, 50% retrace, and GO signals -->
+    <!-- ======================== -->
+    <!-- Brain Node Buttons -->
+    <!-- ======================== -->
     <div class="brain-nodes">
         <button id="legBtn">LEG</button>
         <button id="retracementBtn">50% Retrace</button>
         <button id="goBtn">GO</button>
     </div>
 
+    <!-- ======================== -->
     <!-- Chart Container -->
-    <!-- The NASDAQ chart will render here -->
+    <!-- ======================== -->
     <div id="chart" style="height: 400px; width: 100%;"></div>
 
+    <!-- ======================== -->
     <!-- Session Logs -->
-    <!-- Logs show each event when buttons are pressed -->
+    <!-- ======================== -->
     <h2>Session Logs</h2>
     <div id="logs"></div>
 
+    <!-- ======================== -->
     <!-- Main Script -->
-    <!-- Contains all JavaScript logic -->
+    <!-- ======================== -->
     <script src="script.js"></script>
 </body>
 </html>
+
+
