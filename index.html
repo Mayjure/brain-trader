@@ -1,90 +1,68 @@
 <!--
 index.html
-----------------
-This file defines WHAT EXISTS on the page.
-It does NOT control colors.
-It does NOT control behavior.
-It only says:
-- what text exists
-- what buttons exist
-- what sections exist
+==========
+Main page for Brain Trader system
+Contains:
+- Brain training nodes (LEG, 50%, GO)
+- Free real-time NASDAQ chart
 -->
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <!-- Character set so text displays correctly -->
   <meta charset="UTF-8">
+  <title>Brain Trader</title>
 
-  <!-- Title shown on the browser tab -->
-  <title>Brain Trader – Training System</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Connect this page to the CSS (appearance) file -->
+  <!-- Connect CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- Main title visible on the page -->
-  <h1>🧠 Brain Trader Trainer</h1>
+  <h1>🧠 Brain Trader</h1>
+  <p class="subtitle">Train your eye to detect legs & 50% retraces</p>
 
-  <!-- Simple instruction -->
-  <p>Leg → 50% Retrace → Continuation</p>
-
-  <!--
-  Container holds the entire training system.
-  We will later split it visually into sections.
-  -->
   <div class="container">
 
-    <!--
-    LEFT SIDE: Brain visualization
-    Each circle lights up when a rule is correctly followed
-    -->
-    <div class="brain">
-
-      <h3>Brain Unlock</h3>
-
-      <!-- Lights up when a LEG is identified -->
-      <div id="legNode" class="node">LEG</div>
-
-      <!-- Lights up when price hits ~50% -->
-      <div id="midNode" class="node">50%</div>
-
-      <!-- Lights up when continuation happens -->
-      <div id="contNode" class="node">GO</div>
-
+    <!-- Brain Training Panel -->
+    <div class="panel brain-panel">
+      <h2>Brain Unlock</h2>
+      <div id="leg" class="node">LEG</div>
+      <div id="mid" class="node">50%</div>
+      <div id="go" class="node">GO</div>
+      <div id="status" class="status">Waiting for leg...</div>
+      <button onclick="markLeg()">Mark Leg</button>
+      <button onclick="markMid()">Hit 50%</button>
+      <button onclick="markGo()">Continuation</button>
     </div>
 
-    <!--
-    RIGHT SIDE: Control buttons
-    You click these ONLY when market rules are met
-    -->
-    <div class="controls">
-
-      <h3>Market Actions</h3>
-
-      <!-- Button to mark a market leg -->
-      <button onclick="markLeg()">Mark Leg</button>
-
-      <!-- Button to mark the 50% retracement -->
-      <button onclick="markMid()">Price Hit 50%</button>
-
-      <!-- Button to mark continuation -->
-      <button onclick="markContinue()">Continuation</button>
-
-      <!-- Status messages appear here -->
-      <div id="log">Waiting for leg…</div>
-
+    <!-- NASDAQ Chart Panel -->
+    <div class="panel chart-panel">
+      <h2>NASDAQ Live Chart</h2>
+      <div id="tv_chart"></div>
     </div>
 
   </div>
 
-  <!--
-  Connect this page to the JavaScript file.
-  This must be at the bottom so the page loads first.
-  -->
+  <!-- TradingView free real-time chart library -->
+  <script src="https://s3.tradingview.com/tv.js"></script>
+
+  <!-- Initialize TradingView chart -->
+  <script>
+    new TradingView.widget({
+      container_id: "tv_chart",
+      symbol: "NASDAQ:NDX",
+      interval: "5",
+      theme: "dark",
+      width: "100%",
+      height: 400
+    });
+  </script>
+
+  <!-- Connect JavaScript logic -->
   <script src="script.js"></script>
 
 </body>

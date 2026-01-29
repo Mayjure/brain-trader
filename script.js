@@ -1,65 +1,44 @@
 /*
 script.js
----------
-This file controls HOW the system behaves.
-Rules matter.
-Order matters.
-This trains discipline and patience.
+=========
+Controls Brain Unlock logic and button sequence
 */
 
-// Get references to visual brain nodes
-const legNode = document.getElementById("legNode");
-const midNode = document.getElementById("midNode");
-const contNode = document.getElementById("contNode");
+const leg = document.getElementById("leg");
+const mid = document.getElementById("mid");
+const go = document.getElementById("go");
+const status = document.getElementById("status");
 
-// Get reference to message area
-const log = document.getElementById("log");
-
-/*
-Reset function:
-Turns off all brain lights.
-Used when a new leg starts.
-*/
+// Reset all nodes
 function reset() {
-  legNode.classList.remove("active");
-  midNode.classList.remove("active");
-  contNode.classList.remove("active");
+  leg.classList.remove("active");
+  mid.classList.remove("active");
+  go.classList.remove("active");
 }
 
-/*
-Called when YOU identify a market leg.
-This must be done FIRST.
-*/
+// Mark leg node
 function markLeg() {
   reset();
-  legNode.classList.add("active");
-  log.innerText = "Leg detected. Wait for 50% retrace.";
+  leg.classList.add("active");
+  status.innerText = "Leg formed. Wait for 50%.";
 }
 
-/*
-Called ONLY after a leg exists.
-Represents patience and discipline.
-*/
+// Mark mid node (50% retrace)
 function markMid() {
-  if (!legNode.classList.contains("active")) {
-    log.innerText = "Find a leg first.";
+  if (!leg.classList.contains("active")) {
+    status.innerText = "No leg yet. Press 'Mark Leg' first.";
     return;
   }
-
-  midNode.classList.add("active");
-  log.innerText = "50% reached. Stay patient.";
+  mid.classList.add("active");
+  status.innerText = "50% reached. Stay patient.";
 }
 
-/*
-Called ONLY after 50% retrace.
-Confirms continuation.
-*/
-function markContinue() {
-  if (!midNode.classList.contains("active")) {
-    log.innerText = "Wait for the 50% first.";
+// Mark continuation
+function markGo() {
+  if (!mid.classList.contains("active")) {
+    status.innerText = "Patience. 50% not hit yet.";
     return;
   }
-
-  contNode.classList.add("active");
-  log.innerText = "Continuation confirmed. Brain trained.";
+  go.classList.add("active");
+  status.innerText = "Continuation confirmed.";
 }
