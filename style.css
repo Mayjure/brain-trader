@@ -1,56 +1,76 @@
-/* ======================== */
-/* Body Styling */
-/* ======================== */
+/*
+style.css
+=========
+Modern dark theme for Brain Trader system
+*/
+
 body {
-    font-family: Arial, sans-serif; // Font family
-    background: linear-gradient(to right, #0f2027, #203a43, #2c5364); // Gradient background
-    color: #ffffff; // Text color
-    margin: 0;
-    padding: 20px;
+  background: radial-gradient(circle, #1b1f3b, #0b0d17);
+  color: white;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  padding: 20px;
 }
 
-/* ======================== */
-/* Header Styling */
-/* ======================== */
-h1, h2 {
-    text-align: center; // Center headers
+h1 {
+  margin-bottom: 5px;
 }
 
-/* ======================== */
-/* Brain Node Buttons */
-/* ======================== */
-.brain-nodes {
-    text-align: center; // Center button container
-    margin-bottom: 20px;
+.subtitle {
+  color: #9aa4ff;
+  margin-bottom: 30px;
 }
 
-.brain-nodes button {
-    background: #ff9800; // Button background
-    border: none;
-    color: #fff; // Button text
-    padding: 15px 30px;
-    margin: 5px;
-    border-radius: 10px; // Rounded corners
-    cursor: pointer;
-    font-size: 18px;
-    transition: transform 0.2s, background 0.2s; // Smooth hover effect
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.brain-nodes button:hover {
-    transform: scale(1.1); // Grow on hover
-    background: #ffc107; // Color change on hover
+.panel {
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  padding: 20px;
+  width: 350px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
 }
 
-/* ======================== */
-/* Session Logs Styling */
-/* ======================== */
-#logs {
-    background: rgba(0,0,0,0.5); // Semi-transparent
-    padding: 10px;
-    border-radius: 8px;
-    max-height: 200px;
-    overflow-y: auto; // Scroll if too many logs
-    margin-top: 10px;
-    font-size: 14px;
-    line-height: 1.4;
+.node {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #2c2f4a;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.node.active {
+  background: #22c55e;
+  box-shadow: 0 0 20px #22c55e;
+  transform: scale(1.1);
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 8px;
+  border: none;
+  background: #3b82f6;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2563eb;
+}
+
+.status {
+  margin: 10px;
+  color: #c7d2fe;
 }

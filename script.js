@@ -1,82 +1,44 @@
-/* ======================== */
-/* Initialize Logs */
-/* ======================== */
-let logs = []; // Store all session events
+/*
+script.js
+=========
+Controls Brain Unlock logic and button sequence
+*/
 
-/* ======================== */
-/* Grab HTML Elements */
-/* ======================== */
-const legBtn = document.getElementById('legBtn'); // LEG button
-const retracementBtn = document.getElementById('retracementBtn'); // 50% retrace button
-const goBtn = document.getElementById('goBtn'); // GO button
-const logsDiv = document.getElementById('logs'); // Logs div
+const leg = document.getElementById("leg");
+const mid = document.getElementById("mid");
+const go = document.getElementById("go");
+const status = document.getElementById("status");
 
-/* ======================== */
-/* Log Function */
-/* ======================== */
-function logEvent(event) {
-    const timestamp = new Date().toLocaleTimeString(); // Current time
-    logs.push(`${timestamp} → ${event}`); // Save to array
-    logsDiv.innerHTML = logs.join('<br>'); // Update HTML
+// Reset all nodes
+function reset() {
+  leg.classList.remove("active");
+  mid.classList.remove("active");
+  go.classList.remove("active");
 }
 
-/* ======================== */
-/* Button Event Listeners */
-/* ======================== */
-legBtn.addEventListener('click', () => logEvent('LEG triggered'));
-retracementBtn.addEventListener('click', () => logEvent('50% retrace triggered'));
-goBtn.addEventListener('click', () => logEvent('GO signal triggered'));
+// Mark leg node
+function markLeg() {
+  reset();
+  leg.classList.add("active");
+  status.innerText = "Leg formed. Wait for 50%.";
+}
 
-/* ======================== */
-/* NASDAQ Chart Setup */
-/* ======================== */
-const chartContainer = document.getElementById('chart'); // Chart container
+// Mark mid node (50% retrace)
+function markMid() {
+  if (!leg.classList.contains("active")) {
+    status.innerText = "No leg yet. Press 'Mark Leg' first.";
+    return;
+  }
+  mid.classList.add("active");
+  status.innerText = "50% reached. Stay patient.";
+}
 
-// Create chart
-const chart = LightweightCharts.createChart(chartContainer, {
-    width: chartContainer.clientWidth,
-    height: 400,
-    layout: {
-        backgroundColor: '#1b1b1b', // Chart background
-        textColor: '#ffffff', // Text color
-    },
-    grid: {
-        vertLines: { color: '#444' },
-        horzLines: { color: '#444' },
-    },
-    crosshair: { mode: LightweightCharts.CrosshairMode.Normal },
-    rightPriceScale: { borderColor: '#555' },
-    timeScale: { borderColor: '#555' },
-});
-
-// Add line series
-const lineSeries = chart.addLineSeries({
-    color: '#ff9800', // Line color
-    lineWidth: 2, // Line thickness
-});
-
-/* ======================== */
-/* Fetch Free NASDAQ Data */
-/* ======================== */
-fetch('https://financialmodelingprep.com/api/v3/historical-price-full/AAPL?serietype=line&apikey=demo')
-    .then(response => response.json())
-    .then(data => {
-        const formattedData = data.historical.reverse().map(item => ({
-            time: new Date(item.date).getTime() / 1000, // UNIX timestamp
-            value: item.close // Closing price
-        }));
-        lineSeries.setData(formattedData); // Load into chart
-    })
-    .catch(err => logEvent('Error loading chart: ' + err));
-
-/* ======================== */
-/* Responsive Chart on Resize */
-/* ======================== */
-window.addEventListener('resize', () => {
-    chart.applyOptions({ width: chartContainer.clientWidth });
-});
-
-/* ======================== */
-/* Ready for Auto Leg Detection */
-/* ======================== */
-// Later: scan chart data → detect legs, 50% retraces, mark GO signals
+// Mark continuation
+function markGo() {
+  if (!mid.classList.contains("active")) {
+    status.innerText = "Patience. 50% not hit yet.";
+    return;
+  }
+  go.classList.add("active");
+  status.innerText = "Continuation confirmed.";
+}
