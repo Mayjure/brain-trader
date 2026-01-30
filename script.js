@@ -98,18 +98,3 @@ function activateGreen() {
     document.getElementById("green").style.opacity = 1;
 }
 
-/* ======================== */
-/* TradingView Chart */
-/* ======================== */
-
-window.onload = function () {
-    new TradingView.widget({
-        "width": "100%",
-        "height": 500,
-        "symbol": "NASDAQ:NDX",
-        "interval": "15",
-        "theme": "dark",
-        "container_id": "tradingview_chart"
-    });
-};
-
