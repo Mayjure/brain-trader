@@ -49,21 +49,34 @@ function setLegEnd() {
 
 function checkRetracement() {
     const price = parseFloat(document.getElementById("currentPrice").value);
-
     if (!price || !fiftyLevel) return;
 
-    const distance = Math.abs(price - fiftyLevel);
+    const bias = document.querySelector('input[name="bias"]:checked').value;
+    const tolerance = Math.abs(legEnd - legStart) * 0.05;
 
     resetLights();
 
-    if (distance > 10) {
-        activateRed();
-    } else if (distance > 2) {
-        activateYellow();
-    } else {
-        activateGreen();
+    if (bias === "bull") {
+        if (price > legEnd) {
+            activateRed(); // too high
+        } else if (price > fiftyLevel + tolerance) {
+            activateYellow(); // pulling back
+        } else if (price <= fiftyLevel + tolerance) {
+            activateGreen(); // value zone
+        }
+    }
+
+    if (bias === "bear") {
+        if (price < legEnd) {
+            activateRed(); // too low
+        } else if (price < fiftyLevel - tolerance) {
+            activateYellow(); // pulling back
+        } else if (price >= fiftyLevel - tolerance) {
+            activateGreen(); // value zone
+        }
     }
 }
+
 
 /* ======================== */
 /* Signal Light Controls */
@@ -99,3 +112,4 @@ window.onload = function () {
         "container_id": "tradingview_chart"
     });
 };
+
