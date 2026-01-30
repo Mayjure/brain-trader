@@ -1,5 +1,5 @@
 /* ======================== */
-/* Brain Unlock Function */
+/* Brain Unlock Animation */
 /* ======================== */
 
 function unlockBrain() {
@@ -9,21 +9,23 @@ function unlockBrain() {
         setTimeout(() => {
             phase.style.background = "#00ffcc";
             phase.style.color = "#000";
-        }, index * 500);
+        }, index * 400);
     });
 }
 
 /* ======================== */
-/* Load TradingView NASDAQ */
+/* Load TradingView AFTER page loads */
 /* ======================== */
 
-new TradingView.widget({
-    "width": "100%",
-    "height": 500,
-    "symbol": "NASDAQ:NDX",
-    "interval": "15",
-    "timezone": "Etc/UTC",
-    "theme": "dark",
-    "style": "1",
-    "container_id": "tradingview_chart"
-});
+window.onload = function () {
+    new TradingView.widget({
+        "width": "100%",
+        "height": 500,
+        "symbol": "NASDAQ:NDX",
+        "interval": "15",
+        "timezone": "Etc/UTC",
+        "theme": "dark",
+        "style": "1",
+        "container_id": "tradingview_chart"
+    });
+};
