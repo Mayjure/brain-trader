@@ -81,3 +81,56 @@ button {
 .chart {
     margin-top: 40px;
 }
+
+
+/* ======================== */
+/* Leg Engine Section */
+/* ======================== */
+
+.engine {
+    margin-top: 50px;
+    padding: 20px;
+    background: rgba(0,0,0,0.35);
+    border-radius: 12px;
+}
+
+/* ======================== */
+/* Controls */
+/* ======================== */
+
+.controls button {
+    margin-right: 10px;
+}
+
+/* ======================== */
+/* Price Input */
+/* ======================== */
+
+.price-input {
+    margin-top: 20px;
+}
+
+/* ======================== */
+/* Signal Lights */
+/* ======================== */
+
+.signals {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.light {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    opacity: 0.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.red { background: red; }
+.yellow { background: yellow; color: black; }
+.green { background: lime; color: black; }
